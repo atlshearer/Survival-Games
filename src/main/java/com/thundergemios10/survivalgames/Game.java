@@ -604,9 +604,9 @@ public class Game {
 		
 		HookManager.getInstance().runHook("PLAYER_REMOVED", "player-"+p.getName());
 
-		@SuppressWarnings("unused")
-		PlayerLeaveArenaEvent pl = new PlayerLeaveArenaEvent(p, this, b);
-
+		PlayerLeaveArenaEvent playerleave = new PlayerLeaveArenaEvent(p, this, b);
+		Bukkit.getServer().getPluginManager().callEvent(playerleave);
+		
 		LobbyManager.getInstance().updateWall(gameID);
 	}
 
